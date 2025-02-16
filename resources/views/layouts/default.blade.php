@@ -9,7 +9,7 @@
 </head>
 <body>
 
-    <header>
+    <header class="p-[3rem] bg-blue-300 font-sans tracking-wider">
         @include('partials.header')
     </header>
 
