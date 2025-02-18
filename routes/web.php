@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 
@@ -19,7 +20,8 @@ Route::get('/', function () {
 });
 
 Route::get('/main', function() {
-    return view('main');
+    $user = Auth::user();
+    return view('main',  ['user' => $user]);
 });
 
 Route::post('/register', [UserController::class, 'register']);
