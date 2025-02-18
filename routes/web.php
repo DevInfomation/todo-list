@@ -22,11 +22,13 @@ Route::get('/main', function() {
     return view('main');
 });
 
+Route::post('/register', [UserController::class, 'register']);
+Route::post('/login', [UserController::class, 'login']);
+
 Route::get('/register', function() {
     return view('register');
 });
 
-Route::post('/register', [UserController::class, 'register']);
 
 
 Route::get('/login', function() {
