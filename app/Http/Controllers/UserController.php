@@ -32,6 +32,6 @@ class UserController extends Controller
             $request->session()->regenerate();
         }
 
-        return redirect('/main');
+        return redirect()->route('main');
     }
 }

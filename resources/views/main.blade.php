@@ -4,7 +4,6 @@
 
     @auth
         <p>Congrats, you have logged in: {{$user->name}}</p>
-        <p>something something {{$user->email}}</p>
     @endauth
 
     <h1 class="text-4xl ml-10 mt-10">Enter your task here:</h1>

@@ -22,7 +22,7 @@ Route::get('/', function () {
 Route::get('/main', function() {
     $user = Auth::user();
     return view('main',  ['user' => $user]);
-});
+})->name('main');
 
 Route::post('/register', [UserController::class, 'register']);
 Route::post('/login', [UserController::class, 'login']);
@@ -30,8 +30,6 @@ Route::post('/login', [UserController::class, 'login']);
 Route::get('/register', function() {
     return view('register');
 });
-
-
 
 Route::get('/login', function() {
     return view('login');
