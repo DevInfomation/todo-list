@@ -10,11 +10,11 @@
 </head>
 <body>
 
-    <header class="p-[3rem] font-sans tracking-[0.25em]">
+    <header class="p-[2rem] font-sans tracking-[0.25em]">
         @include('partials.header')
     </header>
 
-    <main class="bg-gray-300">
+    <main>
         @yield('content')
     </main>
 
