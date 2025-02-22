@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Middleware\Authenticate;
+use Illuminate\Auth\Events\Logout;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,13 +18,14 @@ use App\Http\Controllers\UserController;
 */
 
 Route::get('/', function () {
-    return view('index');
+    $user = Auth::user();
+    return view('index', ['user' => $user]);
 });
 
 Route::get('/main', function() {
     $user = Auth::user();
     return view('main',  ['user' => $user]);
-})->name('main');
+})->name('main')->middleware(Authenticate::class);
 
 Route::post('/register', [UserController::class, 'register']);
 Route::post('/login', [UserController::class, 'login']);
@@ -34,3 +37,5 @@ Route::get('/register', function() {
 Route::get('/login', function() {
     return view('login');
 });
+
+Route::post('/logout', [UserController::class, 'logout']);
