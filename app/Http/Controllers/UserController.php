@@ -32,6 +32,11 @@ class UserController extends Controller
             $request->session()->regenerate();
         }
 
-        return redirect()->route('main');
+        return redirect('/main');
+    }
+
+    public function logout(Request $request) {
+        auth()->logout();
+        return redirect('/');
     }
 }
