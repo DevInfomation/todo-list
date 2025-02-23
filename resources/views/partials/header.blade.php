@@ -7,7 +7,7 @@
             <p class="text-xl mt-5">You're currently not signed in</p> 
         
         @else
-            <p>Welcome: {{Auth::user()->name}}</p>
+            <p class="text-2xl mt-2">Welcome: {{Auth::user()->name}}</p>
         @endunless
     
     
