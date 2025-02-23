@@ -5,6 +5,9 @@
     <div>
         @unless (Auth::user()) 
             <p class="text-xl mt-5">You're currently not signed in</p> 
+        
+        @else
+            <p>Welcome: {{Auth::user()->name}}</p>
         @endunless
     
     

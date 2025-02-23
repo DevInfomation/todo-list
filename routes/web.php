@@ -25,17 +25,15 @@ Route::get('/', function () {
 Route::get('/main', function() {
     $user = Auth::user();
     return view('main',  ['user' => $user]);
-})->name('main')->middleware(Authenticate::class);
+})->name('main')->middleware('auth');
 
-Route::post('/register', [UserController::class, 'register']);
-Route::post('/login', [UserController::class, 'login']);
+Route::post('/register', [UserController::class, 'register'])->name('register');
+Route::post('/login', [UserController::class, 'login'])->name('login.submit');
 
 Route::get('/register', function() {
     return view('register');
 });
 
-Route::get('/login', function() {
-    return view('login');
-});
+Route::get('/login', [UserController::class, 'showLoginForm'])->name('login');
 
 Route::post('/logout', [UserController::class, 'logout']);

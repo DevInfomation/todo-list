@@ -19,23 +19,30 @@ class UserController extends Controller
         $user = User::create($incomingFields);
         auth()->login($user);
 
-        return redirect('/main');
+        return redirect()->route('main');
+    }
+
+    public function showLoginForm() {
+        return view('login');
     }
 
     public function login(Request $request) {
         $incomingFields = $request->validate([
             'loginname' => 'required',
-            'loginpassword' => 'required',
+            'loginpassword' => 'required'
         ]);
 
-        if (auth()->attempt(['name' => $incomingFields['loginname'], 'loginpassword' => $incomingFields['loginpassword']])) {
+        if (auth()->attempt(['name' => $incomingFields['loginname'], 'password' => $incomingFields['loginpassword']])) {
             $request->session()->regenerate();
         }
-
-        return redirect('/main');
+        
+        return redirect()->route('main');
+        return back()->withErrors([
+            'name' => 'Invalid credentials.',
+        ]);
     }
-
-    public function logout(Request $request) {
+    
+    public function logout() {
         auth()->logout();
         return redirect('/');
     }

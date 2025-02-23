@@ -7,7 +7,7 @@
         <h2 class="mt-1 text-center text-2xl/9 font-bold tracking-tight text-white mb-4">Sign in to your account</h2>
     </div>
     
-    <form action="register" method="POST">
+    <form action="{{route('register')}}" method="POST">
         @csrf
 
         <div class="flex flex-col items-center justify-content min-h-screen">
