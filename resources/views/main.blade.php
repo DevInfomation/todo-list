@@ -3,21 +3,23 @@
 @section('content')
 
     <div class="ml-[15%] mr-[15%]">
-        <h1 class="text-4xl ml-10 mt-10">Enter your task here:</h1>
         
         <div class="border-4 border-solid rounded-md border-sky-500 mt-5">
+            <h1 class="text-4xl ml-10 mt-10">Enter your task here:</h1>
             <form action="#">
-                @csrf
-                <input name="title" type="text" placeholder="Enter your title here" class="mt-4 mb-4 border rounded p-2">
-                <input name="description" type="text" placeholder="Enter your description here" class="mt-4 mb-4 border rounded p-2">
-                <button class="text-lg cursor-pointer bg-blue-500 rounded-md w-md">Create Task</button>
+                <div class="flex flex-col items-center justify-content ">
+                    @csrf
+                    <input name="title" type="text" placeholder="Enter your title here" class="mt-4 mb-4 border rounded p-2">
+                    <input name="description" type="textarea" placeholder="Enter your description here" class="mt-4 mb-4 border rounded p-2">
+                    <button class="mt-7 mb-7 border rounded p-2 bg-blue-900 hover:bg-sky-700 transition duration-300 text-xl">Create Task</button>
+                </div>
             </form>
         </div>
     
         <form action="/logout" method="POST">
             @csrf
     
-            <button>Logout</button>
+            <button class="mt-7 border rounded p-2 bg-blue-900 hover:bg-sky-700 transition duration-300 text-xl">Logout</button>
         </form>
 
     </div>
