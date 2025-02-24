@@ -30,7 +30,7 @@ Route::get('/main', function() {
 
 Route::post('/register', [UserController::class, 'register'])->name('register');
 Route::post('/login', [UserController::class, 'login'])->name('login.submit');
-Route::post('/create-task', [TaskController::class, 'create-task'])->name('create-task');
+Route::post('/create-task', [TaskController::class, 'createTask'])->name('create-task');
 
 Route::get('/register', function() {
     return view('register');
