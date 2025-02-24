@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Task;
 use Illuminate\Http\Request;
 
 class TaskController extends Controller
@@ -12,6 +13,11 @@ class TaskController extends Controller
             'description' => 'required',
         ]);
 
-        
+        $incomingFields['title'] = strip_tags($incomingFields['title']);
+        $incomingFields['description'] = strip_tags($incomingFields['description']);
+        $incomingFields['user_id'] = auth()->id();
+        Task::create($incomingFields);
+
+        return redirect()->route('main');
     }
 }
