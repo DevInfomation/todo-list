@@ -17,10 +17,12 @@
         
         @foreach ($tasks as $task)
             <div class="border-4 border-solid rounded-md border-sky-500 mt-5 p-5">
+                @php $timeOfCreatedTask = $task->created_at->format('H:i'); @endphp
                 <p>This is the id: {{$task->id}}</p> 
                 <p>This is the title: {{$task->title}}</p> 
                 <p>This is the description: {{$task->description}}</p> 
                 <p>This is the user_id: {{$task->user_id}}</p> 
+                <p>The time the task was created was at: {{$timeOfCreatedTask}}</p>
                 <button class="mt-2 border rounded p-2 bg-blue-900 hover:bg-sky-700 transition duration-300 text-xl">Edit</button>
                 <button class="mt-2 border rounded p-2 bg-blue-900 hover:bg-sky-700 transition duration-300 text-xl">Delete</button>
             </div>
