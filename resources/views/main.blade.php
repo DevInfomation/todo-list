@@ -2,11 +2,6 @@
 
 @section('content')
 
-    @php
-        $item = new Illuminate\Console\View\Components\Task;
-        $table = $item->getTable();
-    @endphp
-
     <div class="ml-[15%] mr-[15%]">
         <div class="border-4 border-solid rounded-md border-sky-500 mt-5">
             <h1 class="text-4xl ml-10 mt-10">Enter your task here:</h1>
@@ -19,6 +14,16 @@
                 </div>
             </form>
         </div>
+        
+        @foreach ($tasks as $task)
+            <div class="border-4 border-solid rounded-md border-sky-500 mt-5 p-5">
+                <p>This is the id: {{$task->id}}</p> 
+                <p>This is the title: {{$task->title}}</p> 
+                <p>This is the description: {{$task->description}}</p> 
+                <p>This is the user_id: {{$task->user_id}}</p> 
+            </div>
+        @endforeach
+
     
         <form action="/logout" method="POST">
             @csrf
