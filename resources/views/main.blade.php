@@ -21,6 +21,8 @@
                 <p>This is the title: {{$task->title}}</p> 
                 <p>This is the description: {{$task->description}}</p> 
                 <p>This is the user_id: {{$task->user_id}}</p> 
+                <button class="mt-2 border rounded p-2 bg-blue-900 hover:bg-sky-700 transition duration-300 text-xl">Edit</button>
+                <button class="mt-2 border rounded p-2 bg-blue-900 hover:bg-sky-700 transition duration-300 text-xl">Delete</button>
             </div>
         @endforeach
 
