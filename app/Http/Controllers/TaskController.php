@@ -20,4 +20,10 @@ class TaskController extends Controller
 
         return redirect()->route('main');
     }
+
+    public function displayTable() {
+        $tasks = Task::all();
+
+        return view('main', ['tasks' => $tasks]);
+    }
 }

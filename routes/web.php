@@ -28,6 +28,8 @@ Route::get('/main', function() {
     return view('main',  ['user' => $user]);
 })->name('main')->middleware('auth');
 
+Route::get('/main', [TaskController::class, 'displayTable'])->name('main');
+
 Route::post('/register', [UserController::class, 'register'])->name('register');
 Route::post('/login', [UserController::class, 'login'])->name('login.submit');
 Route::post('/create-task', [TaskController::class, 'createTask'])->name('create-task');
