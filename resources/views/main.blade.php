@@ -23,8 +23,12 @@
                 <p>This is the description: {{$task->description}}</p> 
                 <p>This is the user_id: {{$task->user_id}}</p> 
                 <p>The time the task was created was at: {{$timeOfCreatedTask}}</p>
-                <button class="mt-2 border rounded p-2 bg-blue-900 hover:bg-sky-700 transition duration-300 text-xl">Edit</button>
-                <button class="mt-2 border rounded p-2 bg-blue-900 hover:bg-sky-700 transition duration-300 text-xl">Delete</button>
+                <button class="mt-2 border rounded p-2 bg-blue-900 hover:bg-sky-700 transition duration-300 text-xl"><a href="/edit-task/{{$task->id}}">Edit</a></button>
+                <form action="/delete-task/{{$task->id}}">
+                    @csrf
+                    @method('DELETE')
+                    <button class="mt-2 border rounded p-2 bg-blue-900 hover:bg-sky-700 transition duration-300 text-xl">Delete</button>
+                </form>
             </div>
         @endforeach
 
