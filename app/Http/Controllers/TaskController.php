@@ -26,4 +26,37 @@ class TaskController extends Controller
 
         return view('main', ['tasks' => $tasks]);
     }
+
+    public function updatedTasks(Task $task, Request $request) {
+        if (auth()->user()->id !== $task['user_id']) {
+            return redirect()->route('login');
+        }
+
+        $incomingFields = $request->validate([
+            'title' => 'required',
+            'description' => 'required'
+        ]);
+
+        $incomingFields['title'] = strip_tags($incomingFields['title']);
+        $incomingFields['description'] = strip_tags($incomingFields['description']);
+
+        $task->update($incomingFields);
+        return redirect()->route('main');
+    }
+
+    public function showEditScreen(Task $task) {
+        if (auth()->user()->id !== $task['user_id']) {
+            return redirect()->route('main');
+        }
+
+        return view('edit-task', ['task' => $task]);
+    }
+
+    public function deletedTask(Task $task) {
+        if (auth()->user()->id === $task['user_id']) {
+            $task->delete();
+        }
+
+        return redirect()->route('main');
+    }
 }
