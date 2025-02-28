@@ -24,7 +24,7 @@
                 <p>This is the user_id: {{$task->user_id}}</p> 
                 <p>The time the task was created was at: {{$timeOfCreatedTask}}</p>
                 <button class="mt-2 border rounded p-2 bg-blue-900 hover:bg-sky-700 transition duration-300 text-xl"><a href="/edit-task/{{$task->id}}">Edit</a></button>
-                <form action="/delete-task/{{$task->id}}">
+                <form action="/delete-task/{{$task->id}}" method="POST">
                     @csrf
                     @method('DELETE')
                     <button class="mt-2 border rounded p-2 bg-blue-900 hover:bg-sky-700 transition duration-300 text-xl">Delete</button>
