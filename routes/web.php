@@ -28,11 +28,14 @@ Route::get('/main', function() {
     return view('main',  ['user' => $user]);
 })->name('main')->middleware('auth');
 
-Route::get('/main', [TaskController::class, 'displayTable'])->name('main');
+Route::get('/main', [TaskController::class, 'displayTable'])->name('main')->middleware('auth');
 
 Route::post('/register', [UserController::class, 'register'])->name('register');
 Route::post('/login', [UserController::class, 'login'])->name('login.submit');
 Route::post('/create-task', [TaskController::class, 'createTask'])->name('create-task');
+Route::put('/edit-task/{task}', [TaskController::class, 'updatedTasks']);
+Route::delete('/delete-task/{task}', [TaskController::class, 'deletedTask']);
+Route::get('/edit-task/{task}', [TaskController::class, 'showEditScreen']);
 
 Route::get('/register', function() {
     return view('register');
